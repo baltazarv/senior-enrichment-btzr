@@ -4,7 +4,7 @@ const School = require('./School');
 const data = require('../seed');
 const { students, schools } = data;
 
-School.hasMany(Student);
+// School.hasMany(Student);
 Student.belongsTo(School);
 
 const sync = () => conn.sync({ force: true });
@@ -30,6 +30,7 @@ module.exports = {
   sync,
   seed,
   models: {
+    School,
     Student
   }
 };

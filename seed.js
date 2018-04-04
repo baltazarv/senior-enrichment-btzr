@@ -13,11 +13,11 @@ const students = [
 ];
 
 const schools = [
-  { name: 'Hogwarts School of Witchcraft and Wizardry', imageurl: '', description: '' },
-  { name: 'Williams College', imageurl: '', description: '' },
-  { name: 'Glenbrook North High School', imageurl: '', description: '' },
-  { name: 'Westerburg High School', imageurl: '', description: '' },
-  { name: 'Rydell High School', imageurl: '', description: '' }
+  { name: 'Hogwarts School of Witchcraft and Wizardry', imageurl: '/images/schools/school-1.jpeg', description: '' },
+  { name: 'Williams College', imageurl: '/images/schools/school-2.jpeg', description: '' },
+  { name: 'Glenbrook North High School', imageurl: '/images/schools/school-3.jpeg', description: '' },
+  { name: 'Westerburg High School', imageurl: '/images/schools/school-4.jpeg', description: '' },
+  { name: 'Rydell High School', imageurl: '/images/schools/school-5.jpeg', description: '' }
 ];
 
 module.exports = {
