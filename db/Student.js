@@ -26,7 +26,11 @@ const Student = conn.define('student', {
   },
   gpa: {
     type: Sequelize.FLOAT
-  }
+  },
+  imageurl: {
+    type: Sequelize.STRING,
+    defaultValue: '/images/student-placeholder.jpeg'
+  },
 });
 
 module.exports = Student;

@@ -7,4 +7,18 @@ router.get('/', (req, res, next) => {
   .catch(next);
 });
 
+router.put('/:id', (req, res, next) => {
+  Student.findById(req.params.id)
+    .then(student => {
+      if (req.body.schoolId == -1) {
+        student.schoolId = null;
+      } else {
+        Object.assign(student, req.body);
+      }
+      return student.save();
+    })
+    .then(student => res.send(student))
+    .catch(next);
+});
+
 module.exports = router;

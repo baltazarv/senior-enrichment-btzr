@@ -11,7 +11,13 @@ const School = conn.define('school', {
   },
   imageurl: {
     type: Sequelize.STRING,
-    defaultValue: '/images/student-placeholder.jpeg'
+    defaultValue: 'http://www.mshistorynow.mdah.ms.gov/images/650.jpg'
+  },
+  address1: {
+    type: Sequelize.STRING
+  },
+  address2: {
+    type: Sequelize.STRING
   },
   description: {
     type: Sequelize.TEXT

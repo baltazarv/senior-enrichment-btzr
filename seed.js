@@ -1,3 +1,13 @@
+const faker = require('faker');
+
+const schools = [
+  { name: 'Hogwarts School of Witchcraft and Wizardry', imageurl: '/images/schools/school-1.jpeg', description: '' },
+  { name: 'Williams College', imageurl: '/images/schools/school-2.jpeg', description: '' },
+  { name: 'Glenbrook North High School', imageurl: '/images/schools/school-3.jpeg', description: '' },
+  { name: 'Westerburg High School', imageurl: '/images/schools/school-4.jpeg', description: '' },
+  { name: 'Rydell High School', imageurl: '/images/schools/school-5.jpeg', description: '' }
+];
+
 const students = [
   { firstname: 'Harry', lastname: 'Potter', email: 'harry@potter.com', gpa: 3.8 },
   { firstname: 'Benjamin', lastname: 'Braddock', email: 'ben@braddock.com', gpa: 3.0 },
@@ -12,15 +22,26 @@ const students = [
   { firstname: 'Sandy', lastname: 'Olsson', email: 'sandy@olsson.com', gpa: 3.9 }
 ];
 
-const schools = [
-  { name: 'Hogwarts School of Witchcraft and Wizardry', imageurl: '/images/schools/school-1.jpeg', description: '' },
-  { name: 'Williams College', imageurl: '/images/schools/school-2.jpeg', description: '' },
-  { name: 'Glenbrook North High School', imageurl: '/images/schools/school-3.jpeg', description: '' },
-  { name: 'Westerburg High School', imageurl: '/images/schools/school-4.jpeg', description: '' },
-  { name: 'Rydell High School', imageurl: '/images/schools/school-5.jpeg', description: '' }
-];
+const getSchools = () => {
+  schools.forEach(school => {
+    let paragraphs = '';
+    const randoNumPara = Math.ceil(Math.random() * 4);
+    for (var i = 1; i <= randoNumPara; i++) {
+      const newLorem = faker.lorem.paragraph();
+      paragraphs += newLorem; //`${newLorem}\n\n`;
+    }
+    school.description = paragraphs;
+    school.address1 = faker.address.streetAddress();
+    school.address2 = faker.address.city() + ', ' + faker.address.state() + ' ' + faker.address.zipCode();
+  });
+  return schools;
+};
+
+const getStudents = () => {
+  return students;
+};
 
 module.exports = {
-  students,
-  schools
+  getStudents,
+  getSchools
 };

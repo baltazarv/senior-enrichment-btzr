@@ -4,6 +4,8 @@ const path = require('path');
 const port = process.env.PORT || 3000;
 const db = require('./db');
 
+app.use(require('body-parser').json());
+
 db.sync()
   .then(() => db.seed());
 
