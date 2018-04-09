@@ -26,7 +26,7 @@ class Schools extends Component {
     return (
       <div className="container-fluid">
         <div className="row">
-          <div className="col-auto mr-auto"><div className="h1"><span className="oi oi-home" /> Schools </div></div>
+          <div className="col-auto mr-auto"><div className="h1"><span className="oi oi-home" /> Schools</div></div>
           { !schools.length ? <div className="col-sm-12">There are no schools registered on the database.</div> : '' }
           <div className="col-auto"><a href="#" className="btn btn-outline-primary btn-sm h1-button mt-2" data-toggle="collapse" data-target="#addShchoolForm" aria-expanded="false" aria-controls="addShchoolForm">Add New School</a></div>
         </div>

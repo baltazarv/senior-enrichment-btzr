@@ -14,6 +14,15 @@ a {
   margin-bottom: 1rem;
 }
 
+.card-body.student-card {
+  padding: 0.75rem;
+}
+
+.card-img.student-img {
+  max-width: 100px;
+  height: auto;
+}
+
 .img-rounded.student-img {
   max-width: 72px;
   height: auto;
@@ -28,7 +37,7 @@ a {
   margin: 2px 0;
 }
 
-.card-footer + .card-header {
+.card-sub-header {
   border-top: 2px solid #ddd;
   border-bottom: none;
 }

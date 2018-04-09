@@ -24,36 +24,24 @@ class School extends Component {
     this.onUpdate = this.onUpdate.bind(this);
   }
   componentWillMount() {
-    // console.log('componentWillMount');
     this.applyEditMode();
     this.populateEditFields(this.props);
-    // console.log(this.state.imageURL);
-    // console.log(this.state.address1);
-    // console.log(this.state.address2);
-    // console.log(this.state.description);
   }
   componentWillReceiveProps(nextProps) {
-    // console.log('componentWillReceiveProps');
     this.applyEditMode();
     this.populateEditFields(nextProps);
-    // console.log(this.state.imageURL);
-    // console.log(this.state.address1);
-    // console.log(this.state.address2);
-    // console.log(this.state.description);
   }
   applyEditMode() {
-    // console.log('applyEditMode', this.props.history.location.pathname.search('edit') !== -1);
     this.setState({
       isOnEditMode: this.props.history.location.pathname.search('edit') !== -1
     });
   }
   populateEditFields(props) {
-    // console.log('populateEditFields');
     this.setState({
-      imageURL: props.thisSchool.imageurl,
-      address1: props.thisSchool.address1,
-      address2: props.thisSchool.address2,
-      description: props.thisSchool.description,
+      imageURL: props.school.imageurl,
+      address1: props.school.address1,
+      address2: props.school.address2,
+      description: props.school.description,
     });
   }
   removeStudent(student) {
@@ -78,35 +66,35 @@ class School extends Component {
       address2,
       description
     };
-    const updatedStudent = Object.assign({}, this.props.thisSchool, newValues);
+    const updatedStudent = Object.assign({}, this.props.school, newValues);
     this.props.updateSchool(updatedStudent);
   }
   render() {
-    const { thisSchool, studentsOfSchool, studentsNotInSchool, deleteSchool } = this.props;
+    const { school, studentsOfSchool, studentsNotInSchool, deleteSchool } = this.props;
     const { removeStudent, addExistingStudent, onChange, onUpdate } = this;
     const { isOnEditMode, imageURL, address1, address2, description } = this.state;
     return (
       <div className="container mt-4">
         <div className="card">
-          <div className="card-header h2">{ thisSchool.name }</div>
+          <div className="card-header h2">{ school.name }</div>
           <div className="card-body">
             <form onSubmit={ onUpdate }>
               <div className="row">
                 <div className="col-md-6 pb-0 mr">
                   { isOnEditMode ?
                     <div><small><label className="" htmlFor="image-url">Image URL</label></small><textarea id="image-url" className="form-control" rows="2" placeholder="Image URL" value={ imageURL } name="imageURL" onChange={ onChange } /></div> :
-                    <img className="img-thumbnail" src={ thisSchool.imageurl } alt={ thisSchool.name } />}
+                    <img className="img-thumbnail" src={ school.imageurl } alt={ school.name } />}
                     <div className="mt-3 mb-0 pl-2">
                     { isOnEditMode ?
                       <div><small><label htmlFor="addr1">Address 1</label></small><input id="addr1" className="form-control form-control-sm" type="text" placeholder="Address 1" value={ address1 } name="address1" onChange={ onChange } /></div> :
-                      thisSchool.address1 }<br />
+                      school.address1 }<br />
                     { isOnEditMode ?
                       <div><small><label htmlFor="addr2">Address 2</label></small><input id="addr2" className="form-control form-control-sm" type="text" placeholder="Address 2" value={ address2 } name="address2" onChange={ onChange } /></div> :
-                      thisSchool.address2 }</div>
+                      school.address2 }</div>
                 </div>
                 <div className="col-md-6">
                   <div className="row">
-                    <div className="col">{ isOnEditMode ? <div><small><label htmlFor="desc">Description</label></small><textarea id="desc" className="form-control" rows="5" placeholder="School Description" value={ description } name="description" onChange={ onChange } /></div> : <div className="long-description"><pre>{ thisSchool.description }</pre></div> }</div>
+                    <div className="col">{ isOnEditMode ? <div><small><label htmlFor="desc">Description</label></small><textarea id="desc" className="form-control" rows="7" placeholder="School Description" value={ description } name="description" onChange={ onChange } /></div> : <div className="long-description">{ school.description }</div> }</div>
                   </div>
                   {
                     isOnEditMode ?
@@ -121,11 +109,11 @@ class School extends Component {
           </div>
           <div className="card-footer">
             <div className="center-block">
-              { isOnEditMode ? <Link className="btn btn-outline-info btn-sm" to={`/school/${thisSchool.id}/view`}>... View School ...</Link> : <Link className="btn btn-outline-info btn-sm" to={`/school/${thisSchool.id}/edit`}>... Edit School ...</Link> }&nbsp;&nbsp;&nbsp;
-              <button type="button" className="btn btn-outline-danger btn-sm" onClick={ () => deleteSchool(thisSchool.id)} >x Delete School x</button>
+              { isOnEditMode ? <Link className="btn btn-outline-info btn-sm" to={`/school/${school.id}/view`}>... View School ...</Link> : <Link className="btn btn-outline-info btn-sm" to={`/school/${school.id}/edit`}>... Edit School ...</Link> }&nbsp;&nbsp;&nbsp;
+              <button type="button" className="btn btn-outline-danger btn-sm" onClick={ () => deleteSchool(school.id)} >x Delete School x</button>
             </div>
           </div>
-          <div className="card-header h4">
+          <div className="card-header card-sub-header h4">
             <div className="row">
               <div className="col-auto mr-auto">{ studentsOfSchool.length ? '' : 'No ' }Students Enrolled</div>
               <div className="col-auto">
@@ -155,7 +143,6 @@ class School extends Component {
                 <td className="align-middle">* First Name <input className="form-control form-control-sm" type="text" placeholder="First Name" name="firstName" onChange={ onChange } /></td>
                 <td className="align-middle">* Last Name <input className="form-control form-control-sm" type="text" placeholder="Last Name" name="lastName" onChange={ onChange } /></td>
                 <td className="align-middle">* Emal Address <input className="form-control form-control-sm" type="email" placeholder="Email Address" name="email" onChange={ onChange } /></td>
-                <td className="align-middle">GPA <input className="form-control form-control-sm" type="number" placeholder="GPA" name="gpa" onChange={ onChange } /></td>
                 <td><button className="btn btn-outline-primary btn-sm float-right mt-3 mr-3">+ Create New +</button></td>
                 </tr>
             </tbody>
@@ -170,10 +157,9 @@ class School extends Component {
                 studentsOfSchool.map(student => {
                   return (
                     <tr key={ student.id }>
-                      <td className="align-middle"><Link to={`/student/${ student.id }`}><img className="img-rounded student-img" src={ student.imageurl } alt={ student.name } /></Link></td>
-                      <td className="align-middle"><Link to={`/student/${ student.id }`}><strong>{ student.firstname } { student.lastname }</strong></Link></td>
+                      <td className="align-middle"><Link to={`/student/${ student.id }/view`}><img className="img-rounded student-img" src={ student.imageurl } alt={ student.name } /></Link></td>
+                      <td className="align-middle"><Link to={`/student/${ student.id }/view`}><strong>{ student.firstname } { student.lastname }</strong></Link></td>
                       <td className="align-middle"><a href={`mailto:${ student.email }`}>{ student.email }</a></td>
-                      <td className="align-middle">GPA: { student.gpa }</td>
                       <td className="align-middle"><button className="btn btn-outline-danger btn-sm" onClick={ () => removeStudent(student) }>x Remove x</button></td>
                     </tr>
                   );
@@ -190,7 +176,7 @@ class School extends Component {
 }
 
 const mapStateToProps = ({ schools, students }, { id }) => {
-  const thisSchool = schools.find(school => school.id == id) || {};
+  const school = schools.find(_school => _school.id == id) || {};
   const studentsOfSchool = students.filter(student => {
     return student.schoolId == id;
   });
@@ -198,7 +184,7 @@ const mapStateToProps = ({ schools, students }, { id }) => {
     return student.schoolId !== id * 1;
   });
   return {
-    thisSchool,
+    school,
     studentsOfSchool,
     studentsNotInSchool
   };

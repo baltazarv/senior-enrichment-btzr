@@ -9,7 +9,9 @@ const UPDATE_SCHOOL = 'update school';
 const DELETE_SCHOOL = 'delete school';
 // students
 const SET_STUDENTS = 'get students';
+const CREATE_STUDENT = 'create student';
 const UPDATE_STUDENT = 'update student';
+const DELETE_STUDENT = 'delete student';
 
 const schoolReducer = (state = [], action) => {
   switch (action.type) {
@@ -40,10 +42,18 @@ const studentReducer = (state = [], action) => {
     case SET_STUDENTS:
       state = action.students;
       break;
+    case CREATE_STUDENT:
+      state = [...state, action.student];
+      document.location.hash = `/student/${ action.student.id }/edit`;
+      break;
     case UPDATE_STUDENT:
       state = state.map(student => {
         return student.id === action.student.id ? action.student : student;
       });
+      break;
+    case DELETE_STUDENT:
+      state = state.filter(student => student.id !== action.id);
+      document.location.hash = '/students';
       break;
     default:
   }
@@ -116,6 +126,17 @@ const loadStudents = () => {
   };
 };
 
+const createStudent = student => {
+  return dispatch => {
+    return axios.post('/api/students', student)
+    .then(results => results.data)
+    .then(student => dispatch({
+      type: CREATE_STUDENT,
+      student
+    }));
+  };
+};
+
 const updateStudent = student => {
   return dispatch => {
     return axios.put(`/api/students/${student.id}`, student)
@@ -129,5 +150,16 @@ const updateStudent = student => {
   };
 };
 
+const deleteStudent = id => {
+  console.log('delete student')
+  return dispatch => {
+    return axios.delete(`/api/students/${id}`)
+    .then(() => dispatch({
+      type: DELETE_STUDENT,
+      id
+    }));
+  };
+};
+
 export default store;
-export { loadSchools, createSchool, updateSchool, loadStudents, updateStudent, deleteSchool };
+export { loadSchools, createSchool, updateSchool, deleteSchool, loadStudents, updateStudent, createStudent, deleteStudent };
