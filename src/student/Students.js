@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { createStudent, deleteStudent } from './store';
+import { createStudent, deleteStudent } from '../store';
+import StudentCreate from './StudentCreate';
 
 class Student extends Component {
   constructor(props) {
@@ -20,10 +21,8 @@ class Student extends Component {
           <div className="col-auto"><a href="#" className="btn btn-outline-primary btn-sm h1-button mt-2" data-toggle="collapse" data-target="#addStudentForm" aria-expanded="false" aria-controls="addStudentForm">Add New Student</a></div>
         </div>
         <div className="collapse" id="addStudentForm">
-          <div className="card card-body">
-            <div className="input-group">
-              Create student form
-            </div>
+          <div className="card card-body card-table">
+              <StudentCreate />
           </div>
         </div>
         <div className="row">

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { createSchool, deleteSchool } from './store';
+import { createSchool, deleteSchool } from '../store';
 
 class Schools extends Component {
   constructor() {

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { updateStudent, updateSchool, deleteSchool } from './store';
+import { updateStudent, updateSchool, deleteSchool } from '../store';
+import StudentCreate from '../student/StudentCreate';
 
 class School extends Component {
   constructor() {
@@ -137,16 +138,7 @@ class School extends Component {
             </div>
           </div>
           <div className={ 'table-responsive collapse ' + (!studentsOfSchool.length ? 'show' : '') } id="addStudentForm">
-            <table className="table">
-            <tbody>
-              <tr>
-                <td className="align-middle">* First Name <input className="form-control form-control-sm" type="text" placeholder="First Name" name="firstName" onChange={ onChange } /></td>
-                <td className="align-middle">* Last Name <input className="form-control form-control-sm" type="text" placeholder="Last Name" name="lastName" onChange={ onChange } /></td>
-                <td className="align-middle">* Emal Address <input className="form-control form-control-sm" type="email" placeholder="Email Address" name="email" onChange={ onChange } /></td>
-                <td><button className="btn btn-outline-primary btn-sm float-right mt-3 mr-3">+ Create New +</button></td>
-                </tr>
-            </tbody>
-            </table>
+            <StudentCreate />
           </div>
           {
             !studentsOfSchool.length ? '' :

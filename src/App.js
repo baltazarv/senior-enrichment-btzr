@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import Nav from './Nav';
-import Schools from './Schools';
-import School from './School';
-import Students from './Students';
-import Student from './Student';
+import Schools from './school/Schools';
+import School from './school/School';
+import Students from './student/Students';
+import Student from './student/Student';
 import { connect } from 'react-redux';
 import { loadSchools, loadStudents } from './store';
 

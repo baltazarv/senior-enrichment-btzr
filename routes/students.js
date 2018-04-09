@@ -7,6 +7,12 @@ router.get('/', (req, res, next) => {
   .catch(next);
 });
 
+router.post('/', (req, res, next) => {
+  Student.create(req.body)
+  .then(student => res.send(student))
+  .catch(next);
+});
+
 router.put('/:id', (req, res, next) => {
   Student.findById(req.params.id)
     .then(student => {

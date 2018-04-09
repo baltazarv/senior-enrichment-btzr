@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import StudentView from './StudentView';
 import StudentEdit from './StudentEdit';
-import { updateStudent, deleteStudent } from './store';
+import { updateStudent, deleteStudent } from '../store';
 
 class Student extends Component {
   constructor() {
