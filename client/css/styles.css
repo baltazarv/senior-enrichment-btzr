@@ -57,6 +57,12 @@ a {
   background-color: #94bfe2;
 }
 
+#addStudentForm {
+  padding-top: .6em;
+  padding-right: .6em;
+  padding-left: 1em;
+}
+
 /* // Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
 

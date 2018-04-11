@@ -53,7 +53,7 @@ class Schools extends Component {
               </div>
               <input type="text" name="newSchoolName" className="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="School name" onChange={ onNewSchoolNameChange } />
               <div className="input-group-append">
-                <button className="btn btn-outline-primary" type="button" onClick={ onCreateSchool }>+ Create School +</button>
+                <button className="btn btn-outline-primary" onClick={ onCreateSchool }>+ Create School +</button>
               </div>
             </div>
             <div className="text-danger">{ errors.newSchoolName }</div>

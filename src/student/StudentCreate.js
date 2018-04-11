@@ -87,26 +87,6 @@ class StudentCreate extends Component {
   }
 }
 
-// <table className="table">
-// <tbody>
-//   <tr>
-//     <td className="align-middle">
-//       <div className="form-group">
-//         <label htmlFor="studentfirstname"><span className="nowrap">* First Name</span></label> <input className="form-control form-control-sm" id="studentfirstname" type="text" placeholder="First Name" name="firstname" onChange={ onChange } />
-//         <small className="text-danger">{ errors.firstname }</small>
-//       </div>
-//     </td>
-//     <td className="align-middle">
-//       * Last Name <input className="form-control form-control-sm" type="text" placeholder="Last Name" name="lastname" onChange={ onChange } />
-//     </td>
-//     <td className="align-middle">
-//       * Emal Address <input className="form-control form-control-sm" type="email" placeholder="Email Address" name="email" onChange={ onChange } />
-//     </td>
-//     <td><button className="btn btn-outline-primary btn-sm float-right mt-3 mr-3" onClick={ onCreateNew }>+ Create New +</button></td>
-//     </tr>
-// </tbody>
-// </table>
-
 const mapDispatchToProps = dispatch => {
   return {
     createStudent: student => dispatch(createStudent(student))
