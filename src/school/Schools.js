@@ -7,40 +7,56 @@ class Schools extends Component {
   constructor() {
     super();
     this.state = {
-      newSchoolName: ''
+      newSchoolName: '',
+      errors: {}
     };
     this.onNewSchoolNameChange = this.onNewSchoolNameChange.bind(this);
     this.onCreateSchool = this.onCreateSchool.bind(this);
+    this.validators = {
+      newSchoolName: (value) => {
+        if (!value) {
+          return 'School name is required.';
+        }
+      }
+    };
   }
   onNewSchoolNameChange(ev) {
-    // console.log('onNewSchoolNameChange', ev.target.value);
     this.setState({ newSchoolName: ev.target.value });
   }
   onCreateSchool() {
-    // console.log('createSchool', this.state.newSchoolName);
+    const error = this.validators.newSchoolName(this.state.newSchoolName);
+    if (error) {
+      this.setState({ errors: {
+        newSchoolName: error
+      }});
+      return;
+    }
+    console.log('name', this.state.newSchoolName)
     this.props.createSchool({ name: this.state.newSchoolName });
   }
   render() {
     const { schools, studentCounts, deleteSchool } = this.props;
     const { onNewSchoolNameChange, onCreateSchool } = this;
+    const { errors } = this.state;
     return (
       <div className="container-fluid">
         <div className="row">
           <div className="col-auto mr-auto"><div className="h1"><span className="oi oi-home" /> Schools</div></div>
           { !schools.length ? <div className="col-sm-12">There are no schools registered on the database.</div> : '' }
-          <div className="col-auto"><a href="#" className="btn btn-outline-primary btn-sm h1-button mt-2" data-toggle="collapse" data-target="#addShchoolForm" aria-expanded="false" aria-controls="addShchoolForm">Add New School</a></div>
+          <div className="col-auto"><a href="#" className="btn btn-outline-primary btn-sm h1-button mt-2" data-toggle="collapse" data-target="#addSchoolForm" aria-expanded="false" aria-controls="addSchoolForm">Add New School</a></div>
         </div>
-        <div className="collapse" id="addShchoolForm">
+        <div className="collapse" id="addSchoolForm">
           <div className="card card-body">
             <div className="input-group">
               <div className="input-group-prepend">
                 <span className="input-group-text" id="inputGroup-sizing-default">Enter School Name</span>
               </div>
-              <input type="text" className="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="School name" onChange={ onNewSchoolNameChange } />
+              <input type="text" name="newSchoolName" className="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="School name" onChange={ onNewSchoolNameChange } />
               <div className="input-group-append">
                 <button className="btn btn-outline-primary" type="button" onClick={ onCreateSchool }>+ Create School +</button>
               </div>
             </div>
+            <div className="text-danger">{ errors.newSchoolName }</div>
           </div>
         </div>
         <div className="row">

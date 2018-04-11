@@ -2,6 +2,10 @@ a {
   color: black;
 }
 
+.nowrap {
+  white-space: nowrap;
+}
+
 .table {
   margin-bottom: 0;
 }

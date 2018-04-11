@@ -41,11 +41,11 @@ class Student extends Component {
           </Router>
           <div className="card-header card-sub-header h5">
             <div className="row">
-              <div className="col-sm-8">{ studentSchoolMap[student.id] && studentSchoolMap[student.id].school ? 'Member of ' + studentSchoolMap[student.id].school.name : '' }</div>
+              <div className="col-sm-8">{ studentSchoolMap[student.id] && studentSchoolMap[student.id].school ? 'Member of ' + studentSchoolMap[student.id].school.name : 'No school membership.' }</div>
               <div className="col-sm-3">
                 <div className="btn-group">
                   <button type="button" className="btn btn-outline-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Change to School
+                    { studentSchoolMap[student.id] && studentSchoolMap[student.id].school ? 'Change to School' : 'Add School' }
                   </button>
                   <div className="dropdown-menu">
                   {

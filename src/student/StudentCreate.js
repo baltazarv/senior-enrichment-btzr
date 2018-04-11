@@ -49,10 +49,8 @@ class StudentCreate extends Component {
     }, {});
     this.setState({ errors });
     if (Object.keys(errors).length) {
-      console.log('errors', errors);
       return;
     }
-    // const student = { firstname: this.props.id, lastname: this.state.lastname, email: this.state.email };
     this.props.createStudent(this.state)
     .catch(err => {
       this.setState({ error: err.response.data })
@@ -62,22 +60,52 @@ class StudentCreate extends Component {
     const { onChange, onCreateNew } = this;
     const { errors } = this.state;
     return (
-      <table className="table">
-        <tbody>
-          <tr>
-            <td className="align-middle">
-              * First Name <input className="form-control form-control-sm" type="text" placeholder="First Name" name="firstname" onChange={ onChange } />
-              { errors.firstname }
-            </td>
-            <td className="align-middle">* Last Name <input className="form-control form-control-sm" type="text" placeholder="Last Name" name="lastname" onChange={ onChange } /></td>
-            <td className="align-middle">* Emal Address <input className="form-control form-control-sm" type="email" placeholder="Email Address" name="email" onChange={ onChange } /></td>
-            <td><button className="btn btn-outline-primary btn-sm float-right mt-3 mr-3" onClick={ onCreateNew }>+ Create New +</button></td>
-            </tr>
-        </tbody>
-      </table>
+      <div className="row justify-content-between">
+        <div className="col-md-3">
+          <div className="form-group">
+            <label htmlFor="studentfirstname">* First Name</label> <input className="form-control form-control-sm" id="studentfirstname" type="text" placeholder="First Name" name="firstname" onChange={ onChange } />
+            <small className="text-danger">{ errors.firstname }</small>
+          </div>
+        </div>
+        <div className="col-md-3">
+          <div className="form-group">
+            <label>* Last Name</label> <input className="form-control form-control-sm" type="text" placeholder="Last Name" name="lastname" onChange={ onChange } />
+            <small className="text-danger">{ errors.lastname }</small>
+          </div>
+        </div>
+        <div className="col-md-3">
+          <div className="form-group">
+            <label>* Emal Address</label> <input className="form-control form-control-sm" type="email" placeholder="Email Address" name="email" onChange={ onChange } />
+            <small className="text-danger">{ errors.email }</small>
+          </div>
+        </div>
+        <div className="col-auto">
+          <button className="btn btn-outline-primary btn-sm  float-right mt-4 mr-2" onClick={ onCreateNew }>+ Create New +</button>
+        </div>
+      </div>
     );
   }
 }
+
+// <table className="table">
+// <tbody>
+//   <tr>
+//     <td className="align-middle">
+//       <div className="form-group">
+//         <label htmlFor="studentfirstname"><span className="nowrap">* First Name</span></label> <input className="form-control form-control-sm" id="studentfirstname" type="text" placeholder="First Name" name="firstname" onChange={ onChange } />
+//         <small className="text-danger">{ errors.firstname }</small>
+//       </div>
+//     </td>
+//     <td className="align-middle">
+//       * Last Name <input className="form-control form-control-sm" type="text" placeholder="Last Name" name="lastname" onChange={ onChange } />
+//     </td>
+//     <td className="align-middle">
+//       * Emal Address <input className="form-control form-control-sm" type="email" placeholder="Email Address" name="email" onChange={ onChange } />
+//     </td>
+//     <td><button className="btn btn-outline-primary btn-sm float-right mt-3 mr-3" onClick={ onCreateNew }>+ Create New +</button></td>
+//     </tr>
+// </tbody>
+// </table>
 
 const mapDispatchToProps = dispatch => {
   return {

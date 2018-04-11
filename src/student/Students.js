@@ -21,7 +21,7 @@ class Student extends Component {
           <div className="col-auto"><a href="#" className="btn btn-outline-primary btn-sm h1-button mt-2" data-toggle="collapse" data-target="#addStudentForm" aria-expanded="false" aria-controls="addStudentForm">Add New Student</a></div>
         </div>
         <div className="collapse" id="addStudentForm">
-          <div className="card card-body card-table">
+          <div className="card card-body">
               <StudentCreate />
           </div>
         </div>
