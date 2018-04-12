@@ -126,7 +126,7 @@ class School extends Component {
                   {
                     studentsNotInSchool.map(student => {
                       return (
-                        <button key={ student.id } className="dropdown-item" type="button" onClick={ () => addExistingStudent(student) }>{ student.firstname } { student.lastname }</button>
+                        <button key={ student.id } className="dropdown-item" type="button" onClick={ () => addExistingStudent(student) }>{ student.name }</button>
                       );
                     })
                   }

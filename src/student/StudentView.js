@@ -2,14 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const StudentView = ({ student, deleteStudent }) => {
-  const { firstname, lastname, imageurl, email, gpa, id } = student;
+  const { name, imageurl, email, gpa, id } = student;
   return (
     <div>
-      <div className="card-header h2">{firstname + ' ' + lastname}</div>
+      <div className="card-header h2">{ name }</div>
       <div className="card-body">
         <div className="row">
         <div className="col-md-6 pb-0 mr">
-          <img className="img-thumbnail" src={ imageurl } alt={ ( firstname + ' ' + lastname) } />
+          <img className="img-thumbnail" src={ imageurl } alt={ (  name ) } />
         </div>
         <div className="col-md-6">
           <p><em>Email:</em> <strong>{ email }</strong></p>

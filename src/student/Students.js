@@ -31,7 +31,7 @@ class Student extends Component {
             return (
               <div key={ student.id } className="col-sm-6 col-md-4 col-lg-3 col-xl-2">
                 <div className="card">
-                  <Link className="card-header" to={`/student/${student.id}/view`}>{ student.firstname } { student.lastname }</Link>
+                  <Link className="card-header" to={`/student/${student.id}/view`}>{ student.name }</Link>
                   <Link className="card-body student-card" to={`/student/${student.id}/view`}>
                     <img className="card-img student-img mx-auto d-block" src={ student.imageurl } alt={( student.firstname + ' ' + student.lastname )} />
                     <p className="card-text text-center">{ studentSchoolMap[student.id].school ? 'Member of ' : 'No school membership' } <strong>{ studentSchoolMap[student.id].school ? studentSchoolMap[student.id].school.name : '' }</strong></p>

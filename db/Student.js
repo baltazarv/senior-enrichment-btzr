@@ -31,6 +31,19 @@ const Student = conn.define('student', {
     type: Sequelize.STRING,
     defaultValue: '/images/student-placeholder.jpeg'
   },
+}, {
+  getterMethods: {
+    name: function() {
+      return this.firstname + ' ' + this.lastname;
+    }
+  },
+  setterMethods: {
+    name: function(name) {
+      var parts = name.split(' ');
+      this.firstname = parts[0];
+      this.lastname = parts[1];
+    }
+  }
 });
 
 module.exports = Student;
