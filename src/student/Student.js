@@ -36,7 +36,7 @@ class Student extends Component {
           <Router>
             <div>
               <Route path="/student/:id/view" render={({match, history}) => <StudentView id={ match.params.id } history={ history } student={ student } deleteStudent={ deleteStudent} /> } />
-            <Route path="/student/:id/edit" render={({match, history}) => <StudentEdit id={ match.params.id } history={ history } student={ student } updateStudent={ updateStudent } deleteStudent={ deleteStudent} /> } />
+              <Route path="/student/:id/edit" render={({match, history}) => <StudentEdit id={ match.params.id } history={ history } student={ student } updateStudent={ updateStudent } deleteStudent={ deleteStudent} /> } />
             </div>
           </Router>
           <div className="card-header card-sub-header h5">

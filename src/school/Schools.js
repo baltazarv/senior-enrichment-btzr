@@ -31,7 +31,6 @@ class Schools extends Component {
       }});
       return;
     }
-    console.log('name', this.state.newSchoolName)
     this.props.createSchool({ name: this.state.newSchoolName });
   }
   render() {

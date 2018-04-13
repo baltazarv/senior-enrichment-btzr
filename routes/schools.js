@@ -24,7 +24,6 @@ router.put('/:id', (req, res, next) => {
 });
 
 router.delete('/:id', (req, res, next) => {
-  console.log('DELETE', req.params.id)
   School.findById(req.params.id)
     .then(school => school.destroy())
     .then(() => res.sendStatus(204))

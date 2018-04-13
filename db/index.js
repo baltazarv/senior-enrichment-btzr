@@ -4,7 +4,6 @@ const School = require('./School');
 const data = require('../seed');
 const { getStudents, getSchools } = data;
 
-// School.hasMany(Student);
 Student.belongsTo(School);
 
 const sync = () => conn.sync({ force: true });
@@ -22,7 +21,6 @@ const seed = () => {
       });
     }));
   })
-  // .then([]));
   .catch(err => console.log(err));
 };
 
